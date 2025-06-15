@@ -1,20 +1,34 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	var cout int64
-	fmt.Printf("请输入库存剩余：") //结合 1.用户输入 2.进行条件判断（双分支）
+	var X int = 1
+	var cout int
+	fmt.Printf("请输入：")
 	fmt.Scanln(&cout)
-	if cout < 50 {
-		fmt.Println("对不起,你输入的值小于50 库存不足")
-	} else if cout < 60 {
-		fmt.Println("你输入的值小于60 并且大于50")
-	} else if cout < 1214 {
-		fmt.Println("输入值小于1214 并且大于60 库存非常充足")
-	} else if cout == 12345 {
-		fmt.Println("输入的值是指定值 到达临界值")
+
+	switch cout / 10 { //switch 后面是一个表达式，表达式的值会与每个case进行比较
+	case 9: // cout / 10 计算cout的十位数
+		fmt.Println("等级是SS")
+	case 8:
+		fmt.Println("等级为A")
+	case 7:
+		fmt.Println("等级为B")
+	case 6, 5, 4, 3, 2, 1, 0:
+		fmt.Println("等级为C")
 	}
+
+	switch { // switch 后面没有表达式，直接进行条件判断 可当if
+	case X == 1:
+		fmt.Println("aaa")
+	}
+
+	switch b := 22; { //switch 后面定义表达式 需要分号结尾
+	case b > 10:
+		fmt.Println("b大于10")
+	case b < 10:
+		fmt.Println("b小于10")
+	}
+
 }
